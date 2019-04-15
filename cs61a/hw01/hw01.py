@@ -78,15 +78,12 @@ def with_if_function():
     return if_function(c(), t(), f())
 
 def c():
-    "*** YOUR CODE HERE ***"
     return False
 
 def t():
-    "*** YOUR CODE HERE ***"
     return 1 / 0
 
 def f():
-    "*** YOUR CODE HERE ***"
     return 1
 
 def hailstone(n):
@@ -104,16 +101,15 @@ def hailstone(n):
     >>> a
     7
     """
-    length = 1 
+    length = 1
     while n != 1:
         print(n)
         if n % 2 == 0:
-            n = n // 2
-            print(n)
-        else :
-            n = n * 3 + 1
-            print(n)
-    print(n)
+            n = n // 2      # Integer division prevents "1.0" output
+        else:
+            n = 3 * n + 1
+        length = length + 1
+    print(n)                # n is now 1
     return length
 
 
