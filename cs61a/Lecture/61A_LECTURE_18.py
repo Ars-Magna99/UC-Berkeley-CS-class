@@ -17,6 +17,7 @@ from math import sqrt # 引进开平方
 def factors_fast(n):
 	total = 0
 	sqrt_n = sqrt(n)
+	k = 1 
 	while k < sqrt_n:
 		if divides(k,n):
 			total += 2
@@ -25,6 +26,13 @@ def factors_fast(n):
 		total += 1
 	return total 
 
+print(factors_fast(576))
+
+def exp(b,n):
+	if n == 0:
+		return 1
+	else:
+		return exp(b,n-1)*b 
 
 
 
