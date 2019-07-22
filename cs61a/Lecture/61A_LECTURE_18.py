@@ -10,7 +10,7 @@ def factors(n):
 	for i in range(1,n+1):
 		if divides(i,n):
 			total += 1
-	return total # 傻逼，return 当然要卸载loop外面
+	return total # 傻逼，return 当然要在loop外面
 
 from math import sqrt # 引进开平方
 
@@ -33,6 +33,29 @@ def exp(b,n):
 		return 1
 	else:
 		return exp(b,n-1)*b 
+
+
+#@trace
+def exp(b,n):  #not so quick 
+	if n == 0 :
+		 return 1
+	return b* exp(b, n-1)
+
+
+#@trace
+def square(x):
+	return x * x
+
+def fast_exp(b,n):
+	if n == 0:
+		return 1
+	if n % 2 == 0:
+		return square(fast_exp(b,n//2))
+	else:
+		return b * fast_exp(b,n-1)
+
+
+
 
 
 
