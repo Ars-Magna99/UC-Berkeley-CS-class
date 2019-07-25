@@ -31,8 +31,7 @@ class BTree(Tree):
 			return contents(t.left) + [t.label]+contents(t.right)
 
 	def balanced_bst(s):
-		"""Construct a binary search Tree from a sorted list s 
-		"""
+		"""Construct a binary search Tree from a sorted list s		"""
 		if not s:
 			return BTree.empty
 		else:  
@@ -64,7 +63,7 @@ class BTree(Tree):
 				return contains(s.right,v)
 			elif s.root > v:
 				return contains(s.left,v)
-			
+
 
 
 
