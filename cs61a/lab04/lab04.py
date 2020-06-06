@@ -1,5 +1,12 @@
 """ Lab 04: Lists and Data Abstraction """
 
+# Q1 what is the list indexing expression that evaluates to 7?
+# x = [1, 3, [5, 7], 9]  x[2][1]
+# x = x = [[7]]  x[0][0]
+# x = [3, 2, 1, [9, 8, 7]]  x[3][2]
+# x = [[3, [5, 7], 9]]  x[0][1][1]
+
+
 # Q2
 def if_this_not_that(i_list, this):
     """Define a function which takes a list of integers `i_list` and an integer
@@ -14,9 +21,15 @@ def if_this_not_that(i_list, this):
     4
     5
     """
-    "*** YOUR CODE HERE ***"
+    for i in i_list:
+        if i > this:
+            print(i)
+        else:
+            print("that")
 
 # City ADT
+
+
 def make_city(name, lat, lon):
     """
     >>> city = make_city('Berkeley', 0, 1)
@@ -29,6 +42,7 @@ def make_city(name, lat, lon):
     """
     return [name, lat, lon]
 
+
 def get_name(city):
     """
     >>> city = make_city('Berkeley', 0, 1)
@@ -36,6 +50,7 @@ def get_name(city):
     'Berkeley'
     """
     return city[0]
+
 
 def get_lat(city):
     """
@@ -45,6 +60,7 @@ def get_lat(city):
     """
     return city[1]
 
+
 def get_lon(city):
     """
     >>> city = make_city('Berkeley', 0, 1)
@@ -53,8 +69,11 @@ def get_lon(city):
     """
     return city[2]
 
+
 # Q4
 from math import sqrt
+
+
 def distance(city1, city2):
     """
     >>> city1 = make_city('city1', 0, 1)
@@ -66,9 +85,16 @@ def distance(city1, city2):
     >>> distance(city3, city4)
     5.0
     """
-    "*** YOUR CODE HERE ***"
+    x1 = get_lat(city1)
+    x2 = get_lat(city2)
+    y1 = get_lon(city1)
+    y2 = get_lon(city2)
+
+    return sqrt((x1 - x2)**2 + (y1 - y2)**2)
 
 # Q5
+
+
 def closer_city(lat, lon, city1, city2):
     """
     Returns the name of either city1 or city2, whichever is closest to
@@ -83,7 +109,13 @@ def closer_city(lat, lon, city1, city2):
     >>> closer_city(41.29, 174.78, bucharest, vienna)
     'Bucharest'
     """
-    "*** YOUR CODE HERE ***"
+    city_temp = make_city('X', lat, lon)
+    dist1 = distance(city_temp, city1)
+    dist2 = distance(city_temp, city2)
+    if dist1 > dist2:
+        return get_name(city2)
+    else:
+        return get_name(city1)
 
 # Q6
 # This is another implementation of the City ADT. Make sure
