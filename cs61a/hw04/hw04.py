@@ -1,21 +1,26 @@
-##2019-07-17 
+# 2019-07-17
 HW_SOURCE_FILE = 'hw04.py'
 
 ###############
 #  Questions  #
 ###############
 
+
 def intersection(st, ave):
     """Represent an intersection using the Cantor pairing function."""
-    return (st+ave)*(st+ave+1)//2 + ave
+    return (st + ave) * (st + ave + 1) // 2 + ave
+
 
 def street(inter):
     return w(inter) - avenue(inter)
 
+
 def avenue(inter):
     return inter - (w(inter) ** 2 + w(inter)) // 2
 
-w = lambda z: int(((8*z+1)**0.5-1)/2)
+
+def w(z): return int(((8 * z + 1)**0.5 - 1) / 2)
+
 
 def taxicab(a, b):
     """Return the taxicab distance between two intersections.
@@ -27,7 +32,8 @@ def taxicab(a, b):
     >>> taxicab(ess_a_bagel, times_square)
     9
     """
-    return abs(street(a)-street(b))+abs(avenue(a)-avenue(b))
+    return abs(street(a) - street(b)) + abs(avenue(a) - avenue(b))
+
 
 def squares(s):
     """Returns a new list containing square roots of the elements of the
@@ -46,8 +52,9 @@ def squares(s):
         a = int((math.sqrt(i)))
         if a * a == i:
             result.append(a)
-            #print(a)
+            # print(a)
     return result
+
 
 def g(n):
     """Return the value of G(n), computed recursively.
@@ -68,8 +75,9 @@ def g(n):
     """
     if n <= 3:
         return n
-    elif n >3 :
-        return g(n-1) + 2*g(n-2)+3*g(n-3)
+    elif n > 3:
+        return g(n - 1) + 2 * g(n - 2) + 3 * g(n - 3)
+
 
 def g_iter(n):
     """Return the value of G(n), computed iteratively.
@@ -89,17 +97,14 @@ def g_iter(n):
     True
     """
     i = 3
-    num_1, num_2,num_3 = 1,2,3
+    num_1, num_2, num_3 = 1, 2, 3
     if n <= 3:
         return n
-    else: 
+    else:
         while i < n:
-            num_1 ,num_2,num_3 = num_2,num_3,num_3+2*num_2+3*num_1
-            i+=1
+            num_1, num_2, num_3 = num_2, num_3, num_3 + 2 * num_2 + 3 * num_1
+            i += 1
     return num_3
-
-
-
 
 
 def pingpong(n):
@@ -131,24 +136,25 @@ def pingpong(n):
     2
     """
 
-    ###    >>> from construct_check import check
-    ###>>> check(HW_SOURCE_FILE, 'pingpong', ['Assign', 'AugAssign'])
-    ###True
+    # >>> from construct_check import check
+    # >>> check(HW_SOURCE_FILE, 'pingpong', ['Assign', 'AugAssign'])
+    # True
 
     change = 1
-    num = 1 
+    num = 1
     i = 1
-    while i < n :
-        if i % 7 == 0 or has_seven(i) :
+    while i < n:
+        if i % 7 == 0 or has_seven(i):
             change = -change
             num += change
             i += 1
-            #print(num)
+            # print(num)
         else:
             num += change
             i += 1
 
     return num
+
 
 def has_seven(k):
     """Returns True if at least one of the digits of k is a 7, False otherwise.
@@ -173,6 +179,7 @@ def has_seven(k):
     else:
         return has_seven(k // 10)
 
+
 def count_change(amount):
     """Return the number of ways to make change for amount.
 
@@ -185,23 +192,23 @@ def count_change(amount):
     >>> count_change(100)
     9828
     """
-  
-    """  
-    def partitions(n,m):
-        
+
+    def partitions(n, m):
+
         if n == 0:
             return 1
-        elif n <0 :
+        elif n < 0:
             return 0
         elif m == 0:
             return 0
         else:
             with_min = partitions(n - m, m)
-            without_min = partitions(n,2*m)
+            without_min = partitions(n, 2 * m)
             return with_min + without_min
-    return partitions(amount,1)
-    """
+    return partitions(amount, 1)
+
     return count_using(1, amount)
+
 
 def count_using(min_coin, amount):
     if amount < 0:
@@ -212,7 +219,7 @@ def count_using(min_coin, amount):
         return 0
     else:
         with_min = count_using(min_coin, amount - min_coin)
-        without_min = count_using(2*min_coin, amount)
+        without_min = count_using(2 * min_coin, amount)
         return with_min + without_min
 
 
@@ -221,6 +228,7 @@ def count_using(min_coin, amount):
 ###################
 
 from operator import sub, mul
+
 
 def make_anonymous_factorial():
     """Return the value of an expression that computes factorial.
