@@ -37,8 +37,9 @@ class Player(object):
         if destination_place.locked:
             print(destination_place.name,
                   'is locked! Go look for a key to unlock it')
+            print('You are at ' + self.place.name)
 
-        if destination_place == self.place.name:
+        elif destination_place == self.place.name:
             print('Can\'\ t go to ' + destination_place.name +
                   ' from ' + destination_place.name)
             print('Try looking around to see where to go.')
